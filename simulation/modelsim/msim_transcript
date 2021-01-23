@@ -1,0 +1,218 @@
+# do D3-28_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work rtl_work 
+# Copying /home/tvv/intelFPGA_lite/20.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+/home/tvv/fpga/d3_28 {/home/tvv/fpga/d3_28/D3_28.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:48:13 on Jan 16,2021
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+/home/tvv/fpga/d3_28" /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 23:48:13 on Jan 16,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# 
+# stdin: <EOF>
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:48:55 on Jan 16,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 23:48:56 on Jan 16,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+vsim -i -l msim_transcript work.top_test
+# vsim -i -l msim_transcript work.top_test 
+# Start time: 23:49:03 on Jan 16,2021
+# Loading work.top_test
+# Loading work.D3_28
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 32
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(32): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(32): [TFMPC] - Missing connection for port 'tn'.
+add wave -position insertpoint  \
+sim:/top_test/ext_clk \
+sim:/top_test/mhz_10
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 32
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(32): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(32): [TFMPC] - Missing connection for port 'tn'.
+run -all
+# ** Note: $finish    : /home/tvv/fpga/d3_28/D3_28.v(36)
+#    Time: 2 us  Iteration: 0  Instance: /top_test
+# 1
+# Break in Module top_test at /home/tvv/fpga/d3_28/D3_28.v line 36
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:50:07 on Jan 16,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 23:50:07 on Jan 16,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.top_test
+# Loading work.D3_28
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 33
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'tn'.
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:50:26 on Jan 16,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 23:50:26 on Jan 16,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+run -all
+# ** Note: $finish    : /home/tvv/fpga/d3_28/D3_28.v(37)
+#    Time: 2 us  Iteration: 0  Instance: /top_test
+# 1
+# Break in Module top_test at /home/tvv/fpga/d3_28/D3_28.v line 37
+add wave -position insertpoint  \
+sim:/top_test/DUT/div
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.top_test
+# Loading work.D3_28
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 33
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'tn'.
+run -all
+# ** Note: $finish    : /home/tvv/fpga/d3_28/D3_28.v(37)
+#    Time: 2 us  Iteration: 0  Instance: /top_test
+# 1
+# Break in Module top_test at /home/tvv/fpga/d3_28/D3_28.v line 37
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:52:44 on Jan 16,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 23:52:44 on Jan 16,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.top_test
+# Loading work.D3_28
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 33
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'tn'.
+run -all
+# ** Note: $finish    : /home/tvv/fpga/d3_28/D3_28.v(37)
+#    Time: 2 us  Iteration: 0  Instance: /top_test
+# 1
+# Break in Module top_test at /home/tvv/fpga/d3_28/D3_28.v line 37
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:53:59 on Jan 16,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 23:54:00 on Jan 16,2021, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.top_test
+# Loading work.D3_28
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 33
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'tn'.
+run -all
+# ** Note: $finish    : /home/tvv/fpga/d3_28/D3_28.v(37)
+#    Time: 2 us  Iteration: 0  Instance: /top_test
+# 1
+# Break in Module top_test at /home/tvv/fpga/d3_28/D3_28.v line 37
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:55:10 on Jan 16,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 23:55:10 on Jan 16,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.top_test
+# Loading work.D3_28
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 33
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(33): [TFMPC] - Missing connection for port 'tn'.
+run -all
+# ** Note: $finish    : /home/tvv/fpga/d3_28/D3_28.v(37)
+#    Time: 2 us  Iteration: 0  Instance: /top_test
+# 1
+# Break in Module top_test at /home/tvv/fpga/d3_28/D3_28.v line 37
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 23:59:38 on Jan 16,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# ** Error: (vlog-13069) /home/tvv/fpga/d3_28/D3_28.v(19): near "b": syntax error, unexpected IDENTIFIER, expecting ';'.
+# ** Error: (vlog-13069) /home/tvv/fpga/d3_28/D3_28.v(23): near "b": syntax error, unexpected IDENTIFIER, expecting ';'.
+# -- Compiling module top_test
+# End time: 23:59:38 on Jan 16,2021, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# /home/tvv/intelFPGA_lite/20.1/modelsim_ase/linuxaloem/vlog failed.
+vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v
+# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 00:00:02 on Jan 17,2021
+# vlog -reportprogress 300 -work work /home/tvv/fpga/d3_28/D3_28.v 
+# -- Compiling module D3_28
+# -- Compiling module top_test
+# 
+# Top level modules:
+# 	top_test
+# End time: 00:00:02 on Jan 17,2021, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.top_test
+# Loading work.D3_28
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'DUT'.  Expected 4, found 2.
+#    Time: 0 ns  Iteration: 0  Instance: /top_test/DUT File: /home/tvv/fpga/d3_28/D3_28.v Line: 34
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(34): [TFMPC] - Missing connection for port 'ext_reset_n'.
+# ** Warning: (vsim-3722) /home/tvv/fpga/d3_28/D3_28.v(34): [TFMPC] - Missing connection for port 'tn'.
+run -all
+# ** Note: $finish    : /home/tvv/fpga/d3_28/D3_28.v(38)
+#    Time: 2 us  Iteration: 0  Instance: /top_test
+# 1
+# Break in Module top_test at /home/tvv/fpga/d3_28/D3_28.v line 38
+# End time: 00:00:59 on Jan 17,2021, Elapsed time: 0:11:56
+# Errors: 0, Warnings: 3

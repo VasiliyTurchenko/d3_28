@@ -1,0 +1,58 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/tvv/fpga/d3_28/simulation/modelsim
+vD3_28
+Z1 !s110 1610830802
+!i10b 1
+!s100 U>F<n9C:gh1MIUXO=8>ST1
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+Inc:c<FDz[_Qn5Ioh]eAI[3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z4 w1610830800
+Z5 8/home/tvv/fpga/d3_28/D3_28.v
+Z6 F/home/tvv/fpga/d3_28/D3_28.v
+!i122 8
+L0 3 24
+Z7 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z8 !s108 1610830802.000000
+!s107 /home/tvv/fpga/d3_28/D3_28.v|
+Z9 !s90 -reportprogress|300|-work|work|/home/tvv/fpga/d3_28/D3_28.v|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+n@d3_28
+vtop_test
+R1
+!i10b 1
+!s100 ]f9[;Pd?CRa52eO8n`O<E1
+R2
+ImjY[0k]T]5=0fPTV;Z3B:1
+R3
+R0
+R4
+R5
+R6
+!i122 8
+L0 30 14
+R7
+r1
+!s85 0
+31
+R8
+Z12 !s107 /home/tvv/fpga/d3_28/D3_28.v|
+R9
+!i113 1
+R10
+R11
