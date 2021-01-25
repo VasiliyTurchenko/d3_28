@@ -173,11 +173,12 @@ module machine(
 
 	ram ram_impl(
 							.ram_clk(xtal_clk),
-							.Addr(ADDR_n),
+							.Addr_n(ADDR_n),
 							.Data(sigma_bus),
 							.Y(Y_bus),
 							.X(X_bus),
 							._8wn(_8wn),
+							._10wn(_10wn),
 							.En(En),
 							.tn(tn)
 	);
