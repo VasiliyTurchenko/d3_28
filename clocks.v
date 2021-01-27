@@ -108,7 +108,7 @@ SR_latch_gate D16CD(.R(t10n), .S(t5n), .Qbar(A_stolb) );
 endmodule
 
 /* Clock source based on states */
-module clocks2(xtal_in, init, tn, t_romn, A_stolb, t_RASn, t_CASn, t_RAM_WRn);
+module clocks2(xtal_in, init, tn, t_romn, A_stolb, t_RASn, t_CASn, t_RAM_WRn, t_num);
 	input wire xtal_in;
 	input wire init;	// positive logic
 	output reg [10:1] tn;	// neg
@@ -117,10 +117,12 @@ module clocks2(xtal_in, init, tn, t_romn, A_stolb, t_RASn, t_CASn, t_RAM_WRn);
 	output reg t_RASn;
 	output reg t_CASn;
 	output reg  t_RAM_WRn;
+	output reg [3:0] t_num;	// current t number 1...10
 	parameter init_val = 10'b11_1111_1110;
 	initial tn = init_val;
 	reg [1:0] helper;
 	initial helper = 2'b11;
+	initial t_num = 4'b0001;
 	always @(posedge xtal_in or posedge init) begin
 		if (init) begin
 			tn <= 10'b11_1111_1111;
@@ -130,15 +132,23 @@ module clocks2(xtal_in, init, tn, t_romn, A_stolb, t_RASn, t_CASn, t_RAM_WRn);
 			t_RASn <= 1'b1;
 			t_CASn <= 1'b1;
 			t_RAM_WRn <= 1'b1;
+			t_num <= 4'b0001;
 		end
 		else begin
 			if (helper != 2'b00) helper <= helper - 1'b1;
-			if (helper == 2'b10) tn <= init_val;
+			if (helper == 2'b10) begin
+				tn <= init_val;
+				t_num <= 4'b0001;
+			end
 			else begin
 				if (tn == 10'b01_1111_1111) begin
 					tn <= init_val;
+					t_num <= 4'b0001;
 				end
-				else tn <= (tn << 1) | 1'b1;
+				else begin 
+					tn <= (tn << 1) | 1'b1;
+					t_num <= t_num +1'b1;
+				end
 
 				if (~tn[9]) A_stolb <= 1'b1;
 				if (~tn[4]) A_stolb <= 1'b0;

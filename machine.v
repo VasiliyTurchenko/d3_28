@@ -127,6 +127,8 @@ module machine(
 	wire P3;
 	wire P4;
 	wire [3:0] Z0;
+	wire [3:0] Z2;
+	wire [3:0] Z3;	
 	wire [3:0] Z6;
 	
 	wire [3:0] Z4;
@@ -153,6 +155,8 @@ module machine(
 							.P3(P3),
 							.P4(P4),
 							.Z0(Z0),
+							.Z2(Z2),
+							.Z3(Z3),
 							.Z4(Z4),
 							.Z5(Z5),
 							.Z6(Z6),
@@ -175,12 +179,13 @@ module machine(
 							.ram_clk(xtal_clk),
 							.Addr_n(ADDR_n),
 							.Data(sigma_bus),
-							.Y(Y_bus),
-							.X(X_bus),
-							._8wn(_8wn),
+							.Z2(Z2),
+							.Z3(Z3),
 							._10wn(_10wn),
-							.En(En),
-							.tn(tn)
+							.tn(tn),							
+							.En(En),							
+							.Y(Y_bus),
+							.X(X_bus)
 	);
 	
 	io io_impl(

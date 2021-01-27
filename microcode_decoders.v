@@ -50,13 +50,24 @@ module uCode_dec(
 	
 /* 10w is the special commands */	
 	wire [3:0] _10w_AL_LOW;	// low nibble
-	wire [7:0] low_nibble_out;
-	assign _10w_AL_LOW = {~En[25], ~En[26], ~En[27], ~En[28]};
-	DC8_reg _10wdecoder_ll(.A(_10w_AL_LOW), .clk_in(~main_clk), .res(1'b0), .Qn(low_nibble_out));
+	reg [3:0] low_nibble_out;
+	assign _10w_AL_LOW = {En[25], En[26], ~En[27], ~En[28]};
+//	DC8_reg _10wdecoder_ll(.A(_10w_AL_LOW), .clk_in(~main_clk), .res(1'b0), .Qn(low_nibble_out));
+	
+	always @(posedge main_clk) begin
+		low_nibble_out <= 4'b1111;
+		case (_10w_AL_LOW)
+			4'b1100: low_nibble_out[0] <= 0;
+			4'b1101: low_nibble_out[1] <= 0;
+			4'b1110: low_nibble_out[2] <= 0;
+			4'b1111: low_nibble_out[3] <= 0;
+			default : low_nibble_out <= 4'b1111;
+		endcase
+	end
 
 	wire [3:0] _10w_AL_HIGH;	// high nibble
 	wire [7:0] high_nibble_out;
-	assign _10w_AL_HIGH = _10w_AL_LOW;
+	assign _10w_AL_HIGH = {~En[25], En[26], ~En[27], ~En[28]};
 	DC8_reg _10wdecoder_lh(.A(_10w_AL_HIGH), .clk_in(tn[4]), .res(1'b0), .Qn(high_nibble_out));
 	
 	assign _10wn[7:0] = {high_nibble_out[3:0], low_nibble_out[3:0]};
