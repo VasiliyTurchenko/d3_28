@@ -148,6 +148,7 @@ module ram(
    wire [3:0] Yr;
    wire       wrenY;
    assign wrenY =  WR & ~MYn;
+/*
    ram_low	ram_Y (
 		       .address ( {1'b0, MA[13:0]} ),
 		       .clock ( ram_clk ),
@@ -155,7 +156,7 @@ module ram(
 		       .wren ( wrenY ),
 		       .rden(RAM_READ),
 		       .q ( Yr ) );
-
+*/
    always @(posedge tn[4]) begin
       X <= Xr;
       Y <= Yr;
@@ -346,7 +347,7 @@ module ram_test();
 	 @(negedge tn[7]) begin
 	    En[20:17] = operation; /* Ex gets new from ROM */
 	 end
-	 @(posedge tn[4]) begin
+	 @(posedge tn[5]) begin
 	    data = {Y_bus, X_bus};
 	    if (data != expected ) begin
 	       $display("RAM read error at address %d, MA %d, expected %d, read %d\n", address, dut.MA, expected, data);
@@ -478,12 +479,12 @@ module ram_test();
 initial begin
    forever begin
       @(test_ram_write_then_read);
-      for (addr = 0;addr < 2/*16384*/; addr = addr + 1) begin
+      for (addr = 0; addr < 16384; addr = addr + 1) begin
 	 write_byte_16b_addr(addr, ram_operation_CA3, ram_operation_ZPY, (addr ^ (addr << 3)) % 256);
       end
       $display("test_ram_write time = %d\n", $time);
       #20;
-      for (addr = 0;addr < 2/*16384*/; addr = addr + 1) begin
+      for (addr = 0; addr < 16384; addr = addr + 1) begin
 	 read_byte_16b_addr(addr, ram_operation_CA3, (addr ^ (addr << 3)) % 256, data_was_read);
       end
       $display("test_ram_read time = %d\n", $time);
@@ -540,6 +541,63 @@ end
       else cycle = cycle + 1;
    end
    
-endmodule
+endmodule // ram_test
+
+/*
+ * Altera IP simple test
+ */
+module ram_low_test();
+   reg [14:0] MA; // memory address
+   reg [3:0]  DataIn;
+   reg 	      clk;
+   reg 	      rden;
+   reg 	      wren;
+   wire [3:0] DataOut;
+
+   ram_low	DUT (
+		     .address ( MA ),
+		     .clock ( clk ),
+		     .data ( DataIn ),
+		     .wren ( wren ),
+		     .rden( rden ),
+		     .q ( DataOut ) );
+
+   always #1 clk = ~clk;// + 1'b1;
+   /* initial values */		
+   initial 
+     begin
+	clk = 1'b0;
+	MA = 0;
+	DataIn= 0;
+	rden = 0;
+	wren = 0;
+     end
+
+   initial begin
+      forever begin
+	 #1 MA = 8191;
+	 DataIn = 8'h5;
+	 #1;
+	 wren = 1;
+	 #2;
+	 wren = 0;
+	 #1;
+	 DataIn=8'h00;
+	 #4;
+	 rden = 1;
+	 #2;
+	 rden = 0;
+	 #1;
+	 if (DataOut != 8'h5) begin
+	    $display("test failed!\n");
+	 end
+	 #2;
+	 $finish;
+	end		
+   end
+   
+ 
+endmodule // ram_low_test
+
 /*                                   E.O.F.                                        */
 
