@@ -20,7 +20,7 @@
 ## PROGRAM "Quartus Prime"
 ## VERSION "Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition"
 
-## DATE    "Mon Jan 25 13:56:35 2021"
+## DATE    "Mon Feb  1 23:14:36 2021"
 
 ##
 ## DEVICE  "EP4CE6E22C8"
@@ -57,7 +57,6 @@ create_generated_clock -name {tn7} -source [get_registers {MHZ_10~reg0}] -edges 
 create_generated_clock -name {tn8} -source [get_registers {MHZ_10~reg0}] -edges { 15 17 21 } -master_clock {clk10MHz} -invert [get_registers {machine:impl|clocks2:clocks2_impl|tn[8]}] 
 create_generated_clock -name {tn9} -source [get_registers {MHZ_10~reg0}] -edges { 17 19 21 } -master_clock {clk10MHz} -invert [get_registers {machine:impl|clocks2:clocks2_impl|tn[9]}] 
 create_generated_clock -name {tn10} -source [get_registers {MHZ_10~reg0}] -edges { 1 19 21 } -master_clock {clk10MHz} [get_registers {machine:impl|clocks2:clocks2_impl|tn[10]}] 
-create_generated_clock -name {scan_clk} -source [get_registers {MHZ_10~reg0}] -divide_by 6250 -master_clock {clk10MHz} [get_registers {led7x8:led7x8__impl|scan_clk}] 
 
 
 #**************************************************************
@@ -70,14 +69,6 @@ create_generated_clock -name {scan_clk} -source [get_registers {MHZ_10~reg0}] -d
 # Set Clock Uncertainty
 #**************************************************************
 
-set_clock_uncertainty -rise_from [get_clocks {scan_clk}] -rise_to [get_clocks {scan_clk}]  0.030  
-set_clock_uncertainty -rise_from [get_clocks {scan_clk}] -fall_to [get_clocks {scan_clk}]  0.030  
-set_clock_uncertainty -rise_from [get_clocks {scan_clk}] -rise_to [get_clocks {clk10MHz}]  0.030  
-set_clock_uncertainty -rise_from [get_clocks {scan_clk}] -fall_to [get_clocks {clk10MHz}]  0.030  
-set_clock_uncertainty -fall_from [get_clocks {scan_clk}] -rise_to [get_clocks {scan_clk}]  0.030  
-set_clock_uncertainty -fall_from [get_clocks {scan_clk}] -fall_to [get_clocks {scan_clk}]  0.030  
-set_clock_uncertainty -fall_from [get_clocks {scan_clk}] -rise_to [get_clocks {clk10MHz}]  0.030  
-set_clock_uncertainty -fall_from [get_clocks {scan_clk}] -fall_to [get_clocks {clk10MHz}]  0.030  
 set_clock_uncertainty -rise_from [get_clocks {tn10}] -rise_to [get_clocks {tn10}]  0.030  
 set_clock_uncertainty -rise_from [get_clocks {tn10}] -fall_to [get_clocks {tn10}]  0.030  
 set_clock_uncertainty -rise_from [get_clocks {tn10}] -rise_to [get_clocks {tn9}]  0.030  
@@ -518,8 +509,6 @@ set_clock_uncertainty -fall_from [get_clocks {tn1}] -rise_to [get_clocks {tn1}] 
 set_clock_uncertainty -fall_from [get_clocks {tn1}] -fall_to [get_clocks {tn1}]  0.030  
 set_clock_uncertainty -fall_from [get_clocks {tn1}] -rise_to [get_clocks {clk10MHz}]  0.030  
 set_clock_uncertainty -fall_from [get_clocks {tn1}] -fall_to [get_clocks {clk10MHz}]  0.030  
-set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -rise_to [get_clocks {scan_clk}]  0.030  
-set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -fall_to [get_clocks {scan_clk}]  0.030  
 set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -rise_to [get_clocks {tn10}]  0.030  
 set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -fall_to [get_clocks {tn10}]  0.030  
 set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -rise_to [get_clocks {tn9}]  0.030  
@@ -544,8 +533,6 @@ set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -rise_to [get_clocks {c
 set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -fall_to [get_clocks {clk10MHz}]  0.030  
 set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -rise_to [get_clocks {xtal50Mhz}]  0.020  
 set_clock_uncertainty -rise_from [get_clocks {clk10MHz}] -fall_to [get_clocks {xtal50Mhz}]  0.020  
-set_clock_uncertainty -fall_from [get_clocks {clk10MHz}] -rise_to [get_clocks {scan_clk}]  0.030  
-set_clock_uncertainty -fall_from [get_clocks {clk10MHz}] -fall_to [get_clocks {scan_clk}]  0.030  
 set_clock_uncertainty -fall_from [get_clocks {clk10MHz}] -rise_to [get_clocks {tn10}]  0.030  
 set_clock_uncertainty -fall_from [get_clocks {clk10MHz}] -fall_to [get_clocks {tn10}]  0.030  
 set_clock_uncertainty -fall_from [get_clocks {clk10MHz}] -rise_to [get_clocks {tn9}]  0.030  
